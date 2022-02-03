@@ -9,13 +9,13 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_url, notice: 'Successfully logged in!'
     else
-      flash.now.alert = 'Access denied :/ Incorrect login or password'
+      flash.now.alert = 'Неуспех :/ Пароль либо почта не подходит'
       render :new
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, notice: 'Bye!'
+    redirect_to root_url, notice: 'Покеда!'
   end
 end

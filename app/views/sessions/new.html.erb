@@ -1,23 +1,33 @@
-<div class="container content-wrapper buffer-both">
-  <h1 class="title-medium text-center">Authorization</h1>
-
-  <div class="column-1-2">
-    <div class="form">
-      <%= form_tag sessions_path do %>
-        <div class="form-field">
-          <%= label_tag :email, 'Login (email)', class: 'form-label' %>
-          <%= text_field_tag :email, params[:email], class: 'form-text-field' %>
-        </div>
-
-        <div class="form-field">
-          <%= label_tag :password, 'Password', class: 'form-label' %>
-          <%= password_field_tag :password, '', class: 'form-text-field' %>
-        </div>
-
-        <div class="form-action text-center">
-          <%= submit_tag "Go in!", class: 'button button-green button-small' %>
-        </div>
-      <% end %>
+<div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8">
+    <div>
+      <img class="mx-auto h-12 w-auto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Ask.com_Logo.svg/1200px-Ask.com_Logo.svg.png" alt="Workflow">
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        Авторизуйтесь
+      </h2>
+      <p class="mt-2 text-center text-sm text-gray-600">
+        Или
+        <%= link_to 'задавайте вопросы анонимно', root_path, class: 'font-medium text-indigo-600 hover:text-indigo-500' %>
+      </p>
     </div>
+
+    <%= form_tag sessions_path do %>
+      <div class="form-field">
+
+        <%= text_field_tag :email, params[:email], placeholder: 'Почта',
+                           class: 'appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm' %>
+      </div>
+
+      <div class="form-field">
+
+        <%= password_field_tag :password, '', placeholder: 'Пароль',
+                               class: 'appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm' %>
+      </div>
+
+      <div class="form-action text-center">
+        <%= submit_tag "Войти!",
+                       class: 'mt-6 animate-bounce group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' %>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -15,7 +15,7 @@
       <% if @user.errors.any? %>
         <% top_indentation = 0 %>
         <% @user.errors.each do |attr, msg| %>
-          <div aria-live="assertive" class="fixed inset-0 sm:p-10 pointer-events-none mt-10">
+          <div aria-live="assertive" class="fixed inset-0 sm:p-10 pointer-events-none mt-8">
             <div class="my-<%= top_indentation %> flex flex-col sm:items-end">
               <div class="max-w-sm w-full bg-red-200 shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
                 <div class="p-1">
@@ -34,27 +34,33 @@
 
       <div class="space-y-1">
         <div>
-          <%= f.text_field :email, placeholder: 'Почта в формате: example@mail.com', class: 'appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm' %>
+          <%= f.text_field :email, placeholder: 'Почта в формате: example@mail.com',
+                           class: 'appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm' %>
         </div>
 
         <div>
-          <%= f.text_field :username, placeholder: 'Никнейм', class: 'appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm' %>
+          <%= f.text_field :username, placeholder: 'Никнейм',
+                           class: 'appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm' %>
         </div>
 
         <div>
-          <%= f.text_field :name, placeholder: 'Имя', class: 'appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm' %>
+          <%= f.text_field :name, placeholder: 'Имя',
+                           class: 'appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm' %>
         </div>
 
         <div>
-          <%= f.password_field :password, placeholder: 'Пароль', class: 'appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm' %>
+          <%= f.password_field :password, placeholder: 'Пароль',
+                               class: 'appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm' %>
         </div>
 
         <div>
-          <%= f.password_field :password_confirmation, placeholder: 'Подтверждение пароля', class: 'appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm' %>
+          <%= f.password_field :password_confirmation, placeholder: 'Подтверждение пароля',
+                               class: 'appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm' %>
         </div>
       </div>
 
-      <%= f.submit 'Погнали!', class: 'mt-6 animate-bounce group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' %>
+      <%= f.submit 'Погнали!',
+                   class: 'mt-6 animate-bounce group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' %>
 
     <% end %>
     </form>

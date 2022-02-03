@@ -9,20 +9,31 @@
 
     <% if question.answer.present? %>
       <div class="question-answer text-lead">
-        <%= question.answer if question.answer.present? %>
+        <%= question.answer %>
       </div>
     <% end %>
 
-    <div class="question-date">
-      <%= l(question.created_at, format: :short) %>
+    <div class="container">
+      <div class="question-date">
+        <%= l question.created_at, format: :short %>
+      </div>
+
+      <div class="question-date">
+        Воспрос от:
+        <% if question.author.present? %>
+          <%= link_to question.author.username, question.author %>
+        <% else %>
+          Шпиона
+        <% end %>
+      </div>
     </div>
   </div>
 
   <% if question.user == current_user %>
-  <div class="question-actions">
-    <%= link_to fa_icon(action_icon), edit_question_path(question) %>
-    <%= link_to fa_icon('trash-o'),  question_path(question),
-    method: :delete, data: {confirm: 'Are u sure?'}%>
-  </div>
-    <% end %>
+    <div class="question-actions">
+      <%= link_to fa_icon(action_icon), edit_question_path(question) %>
+      <%= link_to fa_icon('trash-o'),  question_path(question),
+                  method: :delete, data: {confirm: 'Are u sure?'}%>
+    </div>
+  <% end %>
 </div>

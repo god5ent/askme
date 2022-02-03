@@ -34,6 +34,12 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def destroy
+    @user.destroy
+    session[:user_id] = nil
+    redirect_to root_url, notice: 'Теперь придется регистрироваться заного'
+  end
+
   def show
     @questions = @user.questions.order(created_at: :desc)
 

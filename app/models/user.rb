@@ -6,7 +6,7 @@ class User < ApplicationRecord
   BG_COLOR_REGEX= /\A#[\da-f]{6}\z/
 
   attr_accessor :password
-  has_many :questions
+  has_many :questions, dependent: :destroy
 
   validates :email, :username, presence: true
   validates :email, :username, uniqueness: true

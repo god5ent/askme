@@ -42,3 +42,8 @@ a {
   font-size: 20px;
   color: #dc554f;
 }
+
+.logo {
+    width: 45px;
+    height: 45px;
+}

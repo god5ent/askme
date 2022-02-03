@@ -15,16 +15,14 @@
       <% if @user.errors.any? %>
         <% top_indentation = 0 %>
         <% @user.errors.each do |attr, msg| %>
-
           <div aria-live="assertive" class="fixed inset-0 sm:p-10 pointer-events-none mt-10">
             <div class="my-<%= top_indentation %> flex flex-col sm:items-end">
               <div class="max-w-sm w-full bg-red-200 shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
                 <div class="p-1">
                   <div class="flex items-center">
-                      <p class="w-0 flex-1 text-sm font-medium text-gray-900">
+                      <p class="w-0 flex-1 text-sm font-medium text-red-600">
                         <%= msg %>
                       </p>
-
                   </div>
                 </div>
               </div>

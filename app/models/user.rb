@@ -3,6 +3,7 @@ require 'openssl'
 class User < ApplicationRecord
   ITERATIONS = 20000
   DIGEST = OpenSSL::Digest::SHA256.new
+  BG_COLOR_REGEX= /\A#[\da-f]{6}\z/
 
   attr_accessor :password
   has_many :questions
@@ -14,6 +15,7 @@ class User < ApplicationRecord
   validates :username, format: { with: /\A[a-zA-Z0-9_]+\z/ }
   validates_presence_of :password, on: :create
   validates_confirmation_of :password
+  validates :background_color, format: {with: BG_COLOR_REGEX}
 
   before_validation :convert_to_downcase
   before_save :encrypt_password

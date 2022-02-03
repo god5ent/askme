@@ -1,50 +1,49 @@
-<div class="container buffer-both">
-  <h1 class="title-medium text-center">Edit profile</h1>
+<div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8">
+    <h1 class="title-medium text-center">Редактирование профиля</h1>
 
-  <div class="column-1-2">
-    <%= form_for(@user) do |f| %>
+    <%= form_for @user do |f| %>
       <% if @user.errors.any? %>
-        <div class="form-errors">
-          <ul>
-            <% for message in @user.errors.full_messages %>
-              <li class="form-error-message"><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
+        <% top_indentation = 0 %>
+        <% @user.errors.each do |attr, msg| %>
+          <div aria-live="assertive" class="fixed inset-0 sm:p-10 pointer-events-none mt-8">
+            <div class="my-<%= top_indentation %> flex flex-col sm:items-end">
+              <div class="max-w-sm w-full bg-red-200 shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
+                <div class="p-1">
+                  <div class="flex items-center">
+                    <p class="w-0 flex-1 text-sm font-medium text-red-600">
+                      <%= msg %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% top_indentation += 8 %>
+        <% end %>
       <% end %>
+      <div class="space-y-1">
 
-      <div class="form-field">
-        <%= f.label :username, class: 'form-label' %>
-        <%= f.text_field :username, class: 'form-text-field' %>
-      </div>
+        <%= f.text_field :username, placeholder: 'Новый логин', class: 'appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm' %>
 
-      <div class="form-field">
-        <%= f.label 'Name', class: 'form-label' %>
-        <%= f.text_field :name, class: 'form-text-field' %>
-      </div>
+        <%= f.text_field :name, placeholder: 'Новое имя', class: 'appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm' %>
 
-      <div class="form-field">
-        <%= f.label 'URL avatar', class: 'form-label' %>
-        <%= f.text_field :avatar_url, class: 'form-text-field' %>
-      </div>
+        <%= f.text_field :avatar_url, placeholder: 'Вставьте урл вашей аватрки', class: 'appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm' %>
 
-      <div class="buffer-top-large buffer-bottom">
-        Leave these fields blank if you dont want to change it
-      </div>
+        <%= f.password_field :password, placeholder: 'Не обязательно! Новый пароль', class: 'appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm' %>
 
-      <div class="form-field">
-        <%= f.label :password, class: 'form-label' %>
-        <%= f.password_field :password, class: 'form-text-field' %>
-      </div>
+        <%= f.password_field :password_confirmation, placeholder: 'Не обязательно! Подтверждение нового пароля', class: 'appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm' %>
 
-      <div class="form-field">
-        <%= f.label :password_confirmation, class: 'form-label' %>
-        <%= f.password_field :password_confirmation, class: 'form-text-field' %>
-      </div>
-
-      <div class="form-action buffer-top text-center">
-        <%= f.submit 'Save!', class: 'button button-red button-small' %>
-      </div>
+        <div class="flex items-center">
+          <%= f.color_field :background_color, class: 'mt-2 mr-4 h-10 w-20 object-right appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm' %>
+          <div>
+            <strong>Цвет профиля</strong>
+          </div>
+        </div>
+        <div class="form-action buffer-top text-center">
+          <%= f.submit 'Сохранить!', class: 'animate-bounce mt-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' %>
+        </div>
     <% end %>
+    </div>
+    </div>
   </div>
 </div>

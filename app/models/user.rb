@@ -3,7 +3,8 @@ require 'openssl'
 class User < ApplicationRecord
   ITERATIONS = 20000
   DIGEST = OpenSSL::Digest::SHA256.new
-  BG_COLOR_REGEX= /\A#[\da-f]{6}\z/
+  BG_COLOR_REGEX= /#[a-f0-9]{6}/i
+  USERNAME_REGEX = /\A\w+\z/
 
   attr_accessor :password
   has_many :questions, dependent: :destroy
@@ -12,7 +13,7 @@ class User < ApplicationRecord
   validates :email, :username, uniqueness: true
   validates :email, email: { mode: :strict }
   validates :username, length: { maximum: 40 }
-  validates :username, format: { with: /\A[a-zA-Z0-9_]+\z/ }
+  validates :username, format: { with: USERNAME_REGEX }
   validates_presence_of :password, on: :create
   validates_confirmation_of :password
   validates :background_color, format: {with: BG_COLOR_REGEX}

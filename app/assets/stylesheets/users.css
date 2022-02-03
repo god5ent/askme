@@ -16,8 +16,8 @@
   width: 100px;
   height: 100px;
   margin: 0 auto;
-  border: 5px solid #00b6ad;
-  border-radius: 50%;
+  border: 1px solid #cf0000;
+  border-radius: 40%;
   overflow: hidden;
 }
 

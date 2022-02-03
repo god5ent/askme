@@ -1,0 +1,26 @@
+#activerecord.errors.models.user.attributes.name.blank
+ru:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            username:
+              blank: "Заполните поле: никнейм"
+              taken: "Занят твой никнейм"
+              invalid: "Неверный формат никнейма"
+            email:
+              taken: "Почта занята :/"
+              blank: "Заполните поле: почта"
+              invalid: "Не забудьте про корректный формат почты"
+            name:
+              blank: "Заполните поле: имя"
+            password:
+              blank: "Заполните поле: пароль"
+  users:
+    show:
+      questions_count:
+        zero: "вопросов"
+        one: "вопрос"
+        few: "вопроса"
+        many: "вопросов"

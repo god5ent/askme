@@ -21,22 +21,23 @@
     <%= link_to "Спроси меня", '', class: 'button button-light', id: 'ask-button' %>
   </div>
 
-  <%# Выводим счетчики вопросов в три колонки. Обратите внимание, что тут %>
-  <%# в пору использовать наш любимый склонятор. На эту тему смотрите ДЗ. %>
-  <div class="user-statistics container text-center">
-    <div class="column-1-3">
-      <h1 class="title-small"><%= @questions_count %></h1>
-      <p>вопросов</p>
+  <div class="column-3-4">
+    <div class="user-statistics">
+      <div class="questions-count buffer-both-small">
+        <div class="column-1-3 text-center">
+          <h3 class="title-statistic">Всего:</h3>
+          <p class="text-statistic"><%= @questions_count %> <%= t(".questions_count", count: @questions_count) %></p>
+        </div>
+        <div class="column-1-3 text-center">
+          <h3 class="title-statistic">Имеет ответ:</h3>
+          <p class="text-statistic"><%= @answers_count %> <%= t(".questions_count", count: @answers_count) %></p>
+        </div>
+        <div class="column-1-3 text-center">
+          <h3 class="title-statistic">Без ответа:</h3>
+          <p class="text-statistic"><%= @unanswered_count %> <%= t(".questions_count", count: @unanswered_count) %></p>
+        </div>
+      </div>
     </div>
-    <div class="column-1-3">
-      <h1 class="title-small"><%= @answers_count %></h1>
-      <p>ответов</p>
-    </div>
-    <div class="column-1-3">
-      <h1 class="title-small"><%= @unanswered_count %></h1>
-      <p>безответных</p>
-    </div>
-  </div>
 </div>
 
 <div class="user-question-form-div column-1-4 column-1-4-right" id='ask-form'>
@@ -64,4 +65,5 @@
       <% end %>
     </div>
   </div>
+</div>
 </div>

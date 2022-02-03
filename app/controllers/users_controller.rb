@@ -42,7 +42,7 @@ class UsersController < ApplicationController
     # Создаем три переменные с количеством вопросов, отвеченных вопросов и
     # безответных вопросов
     @questions_count = @questions.count
-    @answers_count = @questions.where.not(answer: nil).count
+    @answers_count = @questions.count(&:answer)
     @unanswered_count = @questions_count - @answers_count
   end
 

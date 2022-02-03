@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def new
     redirect_to root_url, alert: 'Dont, buddy' if current_user.present?
     @user = User.new
+
   end
 
   def create
@@ -17,7 +18,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to root_url, notice: 'Grate! Welcome!'
+      session[:user_id] = @user.id
+      redirect_to root_url, notice: 'Велкам'
     else
       render 'new'
     end

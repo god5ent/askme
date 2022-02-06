@@ -3,7 +3,7 @@ require 'openssl'
 class User < ApplicationRecord
   ITERATIONS = 20000
   DIGEST = OpenSSL::Digest::SHA256.new
-  BG_COLOR_REGEX= /\h/
+  BG_COLOR_REGEX= /\A#\h{3}{1,2}\z/
   USERNAME_REGEX = /\A\w+\z/
 
   attr_accessor :password

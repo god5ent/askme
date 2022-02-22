@@ -15,7 +15,8 @@ gem 'uglifier'
 gem 'rails-i18n', '~> 6'
 gem 'http_accept_language'
 gem 'bootsnap', '>= 1.4.4', require: false
-gem "validate_url"
+gem 'validate_url'
+gem 'where_exists', '~> 2.0'
 
 
 group :production do

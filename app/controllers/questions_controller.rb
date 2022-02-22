@@ -1,16 +1,16 @@
 class QuestionsController < ApplicationController
+  attr_reader :question
+
   before_action :load_question, only: [:edit, :update, :destroy]
   before_action :authorize_user, except: [:create]
-
-  def edit
-  end
 
   def create
     @question = Question.new(question_params)
     @question.author = current_user
 
     if @question.save
-      redirect_to user_path(@question.user), notice: 'Question was successfully created.'
+      create_tags
+      redirect_to user_path(question.user), notice: 'Question was successfully created.'
     else
       render :edit
     end
@@ -18,6 +18,7 @@ class QuestionsController < ApplicationController
 
   def update
     if @question.update(question_params)
+      create_tags
       redirect_to user_path(@question.user), notice: 'Question was successfully updated.'
     else
       render :edit
@@ -31,6 +32,15 @@ class QuestionsController < ApplicationController
   end
 
   private
+
+  def create_tags
+    question.hashtags =
+      "#{question.text} #{question.answer}".
+        downcase.
+        scan(Hashtag::REGEXP).
+        uniq.
+        map { |hashtag| Hashtag.find_or_create_by(text: hashtag.delete('#')) }
+  end
 
   def load_question
     @question = Question.find(params[:id])
